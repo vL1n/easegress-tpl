@@ -1,0 +1,15 @@
+name: globalFilter-example
+kind: GlobalFilter
+afterPipeline: 
+  flow:
+  - filter: responsebuilder-example-2
+
+  filters: 
+  - name: responsebuilder-example-2
+    kind: ResponseBuilder
+    protocol: http
+    template: |
+      statusCode: 200
+      headers:
+        X-Mock-Header: mock-value1
+      body: "this is the body"

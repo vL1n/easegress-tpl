@@ -1,0 +1,16 @@
+name: no-response-backend-pipeline
+kind: Pipeline
+# Built-in labels are `END` which can't be used by filters.
+flow:
+  - filter: responsebuilder-example-1
+
+filters:
+  - name: responsebuilder-example-1
+    kind: ResponseBuilder
+    protocol: http
+    template: |
+      statusCode: 200
+      headers:
+        Content-Type:
+          - application/json
+      body: "{\"code\": -1,\"msg\":\"404 not found\"}"
